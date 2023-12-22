@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import Icon from '../Icon.vue';
+import NavItem from '../NavItem/index.vue';
+
+defineProps(['item', 'level' , 'subCaption']);
+</script>
+
+<template>
+  <!-- ---------------------------------------------- -->
+  <!---Item Childern -->
+  <!-- ---------------------------------------------- -->
+  <v-list-group>
+    <!-- ---------------------------------------------- -->
+    <!---Dropdown  -->
+    <!-- ---------------------------------------------- -->
+    <template #activator="{ props }">
+      <v-list-item v-bind="props" :value="item.title" rounded class="mb-1">
+        <!---Icon  -->
+        <template #prepend>
+          <Icon :item="item.icon" :level="level" />
+        </template>
+        <!---Title  -->
+        <v-list-item-title class="mr-auto">
+          {{ $t(item.title) }}
+        </v-list-item-title>
+        <!---If Caption-->
+        <v-list-item-subtitle
+          v-if="item.subCaption"
+          class="text-caption mt-n1 hide-menu"
+        >
+          {{ item.subCaption }}
+        </v-list-item-subtitle>
+      </v-list-item>
+    </template>
+    <!-- ---------------------------------------------- -->
+    <!---Sub Item-->
+    <!-- ---------------------------------------------- -->
+    <template
+      v-for="(subitem, i) in item.children"
+      :key="i"
+      v-if="item.children"
+    >
+      <NavCollapse :item="subitem" v-if="subitem.children" :level="level + 1" />
+      <NavItem :item="subitem" :level="level + 1" v-else></NavItem>
+    </template>
+  </v-list-group>
+
+  <!-- ---------------------------------------------- -->
+  <!---End Item Sub Header -->
+  <!-- ---------------------------------------------- -->
+</template>
