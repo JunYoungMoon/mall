@@ -12,18 +12,6 @@ const AuthRoutes = {
         await import('@/views/authentication/BoxedLogin.vue'),
     },
     {
-      name: 'Register',
-      path: '/auth/register',
-      component: async () =>
-        await import('@/views/authentication/BoxedRegister.vue'),
-    },
-    {
-      name: 'Forgot Password',
-      path: '/auth/forgot-password',
-      component: async () =>
-        await import('@/views/authentication/BoxedForgotPassword.vue'),
-    },
-    {
       name: 'Error',
       path: '/auth/404',
       component: async () => await import('@/views/authentication/Error.vue'),

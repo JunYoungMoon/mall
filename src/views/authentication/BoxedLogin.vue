@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Logo from '@/layouts/full/logo/Logo.vue';
 /* Login form */
 import LoginForm from '@/components/auth/LoginForm.vue';
 </script>
@@ -16,7 +15,7 @@ import LoginForm from '@/components/auth/LoginForm.vue';
           >
             <v-card-item class="pa-sm-8">
               <div class="d-flex justify-center py-4 mb-5">
-                <Logo />
+                <img src="@/assets/images/sample/logo1.png">
               </div>
               <LoginForm />
               <img src="@/assets/images/sample/login-img.png" style="width: 100%; height: auto;" class="mt-2"/>
