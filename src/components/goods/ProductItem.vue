@@ -20,6 +20,7 @@ const props = defineProps({
     <v-card-item class="pt-1 text-center">
       <v-btn
           color="primary"
+          class="text-h6 font-weight-bold"
           :to="`/goods/detail/${goto}`"
       >
         {{ name }} 신청하기

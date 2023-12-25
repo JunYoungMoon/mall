@@ -67,6 +67,7 @@ const validate = async (values: any, { setErrors }: any) => {
       block
       type="submit"
       variant="flat"
+      class="text-h6 font-weight-bold"
     >
       로그인
     </v-btn>

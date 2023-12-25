@@ -1,5 +1,5 @@
 // product shop list
-export type Products = {
+export interface Products {
     id: string | number | undefined;
     image: string;
     name: string;
@@ -19,6 +19,10 @@ export type Products = {
     new?: number;
     qty?: number;
     rank?:number;
+  detail1: string;
+  detail2: string;
+  detail3: string;
+  detail4: string;
 };
 
 

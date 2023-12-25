@@ -15,6 +15,11 @@ const MainRoutes = {
       path: '/goods/detail/:id',
       component: async () => await import('@/views/goods/DetailView.vue'),
     },
+    {
+      name: 'Goods Checkout',
+      path: '/goods/checkout',
+      component: async () => await import('@/views/goods/ProductCheckout.vue'),
+    },
   ],
 };
 

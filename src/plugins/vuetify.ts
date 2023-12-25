@@ -9,10 +9,6 @@ import * as labsComponents from 'vuetify/labs/components';
 // Translations provided by Vuetify
 import { en } from 'vuetify/locale';
 
-// Misc
-import { customSVGs } from '@/plugins/customSvgs';
-// import { loadFonts } from '@/plugins/webfontloader';
-
 import {
   DARK_BLUE_THEME,
   DARK_AQUA_THEME,
@@ -60,7 +56,6 @@ let vuetifyConfig: VuetifyOptions = {
     aliases,
     sets: {
       mdi,
-      custom: customSVGs,
     },
   },
   // Internationalization (i18n)
@@ -73,7 +68,7 @@ let vuetifyConfig: VuetifyOptions = {
   // Theme
   // https://vuetifyjs.com/en/features/theme/
   theme: {
-    defaultTheme: 'BLUE_THEME',
+    defaultTheme: 'ORANGE_THEME',
     themes: {
       BLUE_THEME,
       AQUA_THEME,

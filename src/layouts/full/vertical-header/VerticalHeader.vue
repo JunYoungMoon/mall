@@ -2,15 +2,6 @@
 import { useCustomizer, useAuth } from '@/store';
 
 import { onMounted, ref, watch } from 'vue';
-
-import { GridDotsIcon, Menu2Icon } from 'vue-tabler-icons';
-
-import LanguageDD from './LanguageDD.vue';
-import ProfileDD from './ProfileDD.vue';
-import RightMobileSidebar from './RightMobileSidebar.vue';
-import Searchbar from './Searchbar.vue';
-import ThemeChange from './ThemeChange.vue';
-
 import router from '@/router';
 
 const customizer = useCustomizer();
@@ -41,6 +32,7 @@ onMounted(async () => {
           style="max-width: 100%; max-height: 100%;"
       >
     </v-btn>
+    <span class="font-weight-bold">한화손해보험</span>
 
     <!-- ---------------------------------------------- -->
     <!-- User Profile -->

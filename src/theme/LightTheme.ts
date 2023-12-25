@@ -177,7 +177,7 @@ const ORANGE_THEME: ThemeTypes = {
     'border-color': '#e5eaef',
   },
   colors: {
-    primary: '#FA896B',
+    primary: '#ea6542',
     secondary: '#0074BA',
     info: '#539BFF',
     success: '#00e676',

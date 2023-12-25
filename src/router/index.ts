@@ -1,4 +1,4 @@
-import { useGlobal, useAuth, useUser } from '@/store';
+import { useGlobal } from '@/store';
 import {
   createRouter,
   createWebHistory,
@@ -17,7 +17,7 @@ const routes: RouteRecordRaw[] = [
   AuthRoutes,
   {
     path: '/:pathMatch(.*)*',
-    component: async () => await import('@/views/ErrorView.vue'),
+    component: async () => await import('@/views/authentication/Error.vue'),
   },
 ];
 

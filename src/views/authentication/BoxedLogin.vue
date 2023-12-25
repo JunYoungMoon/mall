@@ -15,10 +15,10 @@ import LoginForm from '@/components/auth/LoginForm.vue';
           >
             <v-card-item class="pa-sm-8">
               <div class="d-flex justify-center py-4 mb-5">
-                <img src="@/assets/images/sample/logo1.png">
+                <img src="@/assets/images/sample/logo1.png" style="width: 100%; height: auto;" />
               </div>
               <LoginForm />
-              <img src="@/assets/images/sample/login-img.png" style="width: 100%; height: auto;" class="mt-2"/>
+              <img src="@/assets/images/sample/login-img.jpg" style="width: 100%; height: auto;" class="mt-2"/>
             </v-card-item>
           </v-card>
         </v-col>
