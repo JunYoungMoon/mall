@@ -1,9 +1,11 @@
-import {defineStore} from 'pinia';
+import { defineStore } from 'pinia';
 
 // types
-import {filter, map, sum} from 'lodash';
+import { filter, map } from 'lodash';
 
-import type {ProductStateProps} from '@/types/apps/EcommerceType';
+import type { ProductStateProps } from '@/types/apps/EcommerceType';
+
+import axios from '@/utils/axios';
 
 export const useEcomStore = defineStore({
   id: 'goods',
@@ -21,6 +23,15 @@ export const useEcomStore = defineStore({
   }),
   getters: {},
   actions: {
+    async fetchProducts() {
+      try {
+        const data = await axios.get('/api/products/list');
+        this.products = data.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
     // AddToCart
     AddToCart(item: any) {
       const product = item;
@@ -31,7 +42,7 @@ export const useEcomStore = defineStore({
       const updateCart = filter(this.cart, p => p.id !== item);
       this.cart = updateCart;
     },
-    //qty
+    // qty
     incrementQty(item: any) {
       const productId = item;
       const updateCart = map(this.cart, (product: any) => {
@@ -45,7 +56,7 @@ export const useEcomStore = defineStore({
       });
       this.cart = updateCart;
     },
-    //qty
+    // qty
     decrementQty(item: any) {
       const productId = item;
       const updateCart = map(this.cart, (product: any) => {

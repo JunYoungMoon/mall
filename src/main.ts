@@ -15,6 +15,9 @@ import vuetify from '@/plugins/vuetify';
 // eslint-disable-next-line import/order
 import router from '@/router';
 
+// Mock Api data
+import './_mockApis';
+
 import '@/scss/settings.scss';
 
 // i18

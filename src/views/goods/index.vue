@@ -2,6 +2,11 @@
 import products from '@/_mockApis/apps/ecommerce/products';
 import ProductItemVue from '@/components/goods/ProductItem.vue';
 import AppBaseCard from '@/components/shared/AppBaseCard.vue';
+
+import {useEcomStore} from '@/store/goods';
+
+const store = useEcomStore();
+
 </script>
 
 <template>

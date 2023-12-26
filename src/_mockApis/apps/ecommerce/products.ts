@@ -1,20 +1,22 @@
+
 // third-party
-import {Chance} from 'chance';
-import {sub} from 'date-fns';
+import { Chance } from 'chance';
+import { sub } from 'date-fns';
 
+import mock from '../../mockAdapter';
 
-import type {Products} from '@/types/apps/EcommerceType.ts';
+import type { Products } from '@/types/apps/EcommerceType.ts';
 
-import product1 from '@/assets/images/products/s1.jpg';
 import product1_1 from '@/assets/images/products/s1-1.jpg';
 import product1_2 from '@/assets/images/products/s1-2.jpg';
 import product1_3 from '@/assets/images/products/s1-3.jpg';
 import product1_4 from '@/assets/images/products/s1-4.jpg';
-import product2 from '@/assets/images/products/s2.jpg';
+import product1 from '@/assets/images/products/s1.jpg';
 import product2_1 from '@/assets/images/products/s2-1.jpg';
 import product2_2 from '@/assets/images/products/s2-2.jpg';
 import product2_3 from '@/assets/images/products/s2-3.jpg';
 import product2_4 from '@/assets/images/products/s2-4.jpg';
+import product2 from '@/assets/images/products/s2.jpg';
 
 
 const chance = new Chance();
@@ -69,5 +71,12 @@ const products: Products[] = [
     detail4: product2_4,
   },
 ];
+
+// ==============================|| MOCK SERVICES ||============================== //
+
+// mock.onGet('/api/products/list').reply(200, { products });
+mock.onGet('/api/products/list').reply(() => {
+  return [200, products];
+});
 
 export default products;
