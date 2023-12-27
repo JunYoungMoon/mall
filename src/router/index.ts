@@ -49,7 +49,7 @@ router.beforeEach(
     // await authStore.checkAuth('accessToken', authStore.csrfToken);
     // // Set User Info
     // // Check if current route requires authentication
-    // const requiresAuth = _to.matched.some(record => record.meta.requiresAuth);
+    const requiresAuth = _to.matched.some(record => record.meta.requiresAuth);
     //
     // // If the user is not authenticated and the current route requires authentication, redirect to login
     // if (requiresAuth && !authStore.isAuth) {
