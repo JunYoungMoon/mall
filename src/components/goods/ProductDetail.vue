@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { MinusIcon, PlusIcon } from 'vue-tabler-icons';
@@ -12,6 +12,10 @@ import { useEcomStore } from '@/store/goods';
 const store = useEcomStore();
 
 const route = useRoute();
+
+onMounted(() => {
+  void store.fetchProduct();
+});
 
 const getProduct = computed(() => {
   return products[parseInt(route.params.id as string) - 1];
