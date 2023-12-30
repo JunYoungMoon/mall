@@ -55,7 +55,7 @@ export default defineStore(
 
         const data = await res.json();
 
-        csrfToken.value = data.csrfToken;
+        return data.csrfToken;
       } catch (error) {
         console.error('Error fetching CSRF token:', error);
         throw error;
