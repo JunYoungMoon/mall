@@ -1,8 +1,10 @@
-/**
- * axios setup to use mock service
- */
+import { useAuth, useCsrf } from '@/store';
 
 import axios from 'axios';
+
+import type {
+  AuthInterface,
+} from '@/interfaces/AuthInterface';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}`;
 
@@ -10,14 +12,25 @@ const axiosServices = axios.create({
   baseURL: baseUrl,
 });
 
+
 // interceptor for http
 axiosServices.interceptors.request.use(
   (config) => {
 
-    config.headers['Content-Type'] = 'application/json';
+    debugger;
 
-    // 예시: Authorization 헤더 추가 (Bearer 토큰 사용)
-    const accessToken = 'your_access_token';
+    config.withCredentials = true;
+
+    const csrfStore = useCsrf();
+    const authStore = useAuth();
+    const { accessToken } = authStore;
+
+    const { csrfToken } = csrfStore;
+
+    if (csrfToken) {
+      config.headers['X-XSRF-TOKEN'] = csrfToken;
+    }
+
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
@@ -30,8 +43,28 @@ axiosServices.interceptors.request.use(
   },
 );
 axiosServices.interceptors.response.use(
-  (response) => response,
-  async error => await Promise.reject(error.response?.data || 'Wrong Services'),
+  async (response) => {
+
+    debugger;
+    const authStore = useAuth();
+    const { refreshToken } = authStore;
+
+    const csrfStore = useCsrf();
+
+    csrfStore.setCsrfToken(response.data.csrfToken);
+
+    // 응답이 refreshTokenRequired를 가지고 있다면 토큰을 갱신
+    // if (response.data?.refreshTokenRequired) {
+    // }
+     // 갱신된 토큰을 사용하여 이전 요청을 재시도
+    const originalRequest = response.config;
+    originalRequest.headers.Authorization = `Bearer ${refreshToken}`;
+    return await axiosServices(originalRequest);
+
+    // refreshTokenRequired가 없는 경우 그냥 응답 반환
+    // return response;
+  },
+  async error => await Promise.reject(error.response?.data.msg || 'Wrong Services'),
 );
 
 export default axiosServices;

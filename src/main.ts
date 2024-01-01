@@ -3,7 +3,7 @@
  */
 
 // Load vue core
-import store, { useAuth } from '@/store';
+import store, { useCsrf } from '@/store';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
 
@@ -45,6 +45,6 @@ router
   .catch(e => console.error(e));
 
 // Set CsrfToken
-const authStore = useAuth();
-const csrfToken = await authStore.getCsrfToken();
-authStore.setCsrfToken(csrfToken);
+const csrfStore = useCsrf();
+const csrfToken = await csrfStore.getCsrfToken();
+csrfStore.setCsrfToken(csrfToken);
