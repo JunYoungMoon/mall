@@ -38,13 +38,15 @@ vue.use(vuetify);
 vue.use(i18n);
 vue.use(PerfectScrollbar);
 
+// Set CsrfToken
+const csrfStore = useCsrf();
+const csrfToken = await csrfStore.getCsrfToken();
+csrfStore.setCsrfToken(csrfToken);
+
 // Run!
 router
   .isReady()
   .then(() => vue.mount('#app'))
   .catch(e => console.error(e));
 
-// Set CsrfToken
-const csrfStore = useCsrf();
-const csrfToken = await csrfStore.getCsrfToken();
-csrfStore.setCsrfToken(csrfToken);
+
