@@ -1,7 +1,6 @@
 /**
  * Vue3 Main script
  */
-
 // Load vue core
 import store, { useCsrf } from '@/store';
 import { createApp } from 'vue';
@@ -38,15 +37,12 @@ vue.use(vuetify);
 vue.use(i18n);
 vue.use(PerfectScrollbar);
 
-// Set CsrfToken
+// csrf token initial settings
 const csrfStore = useCsrf();
-const csrfToken = await csrfStore.getCsrfToken();
-csrfStore.setCsrfToken(csrfToken);
+void csrfStore.getCsrfToken();
 
 // Run!
 router
   .isReady()
   .then(() => vue.mount('#app'))
   .catch(e => console.error(e));
-
-

@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { ref, type Ref } from 'vue';
 
+import axios from '@/utils/axios';
+
 /** Csrf Store */
 export default defineStore(
   'csrf',
@@ -22,14 +24,8 @@ export default defineStore(
      */
     const getCsrfToken = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/getcsrf`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        const data = await res.json();
-
-        return data.csrfToken;
+        const response = await axios.get('/api/getcsrf');
+        setCsrfToken(response.data.csrfToken);
       } catch (error) {
         console.error('Error fetching CSRF token:', error);
         throw error;
