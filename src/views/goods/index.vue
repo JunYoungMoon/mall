@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useGlobal } from '@/store';
 import { onMounted } from 'vue';
 
 import products from '@/_mockApis/apps/ecommerce/products';
@@ -8,6 +9,9 @@ import { useEcomStore } from '@/store/goods';
 import axios from '@/utils/axios';
 
 onMounted(async () => {
+  const globalStore = useGlobal();
+  globalStore.setLoading(false);
+
   const userData = {
     id: 'user1234577',
     email: 'user1423@example.com',

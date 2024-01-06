@@ -10,7 +10,6 @@ import useCustomizer from '@/store/Customizer';
 import useErrMsg from '@/store/ErrorMsgStore';
 import useGlobal from '@/store/GlobalStore';
 import useRule from '@/store/RuleStore';
-import useUser from '@/store/UserStore';
 
 /** Pinia Store */
 const pinia: Pinia = createPinia();
@@ -23,7 +22,6 @@ export {
   useCsrf,
   useGlobal,
   useAuth,
-  useUser,
   useRule,
   useErrMsg,
   useCustomizer,

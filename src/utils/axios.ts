@@ -13,8 +13,8 @@ const axiosServices = axios.create({
 // interceptor for http
 axiosServices.interceptors.request.use(
   async config => {
-    // Add a delay of 500 milliseconds before making the request
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // const { setLoading } = useGlobal();
+    // setLoading(true);
 
     config.withCredentials = true;
 
@@ -40,8 +40,8 @@ axiosServices.interceptors.request.use(
 );
 axiosServices.interceptors.response.use(
   async response => {
-    const { setLoading } = useGlobal();
-    setLoading(false);
+    // const { setLoading } = useGlobal();
+    // setLoading(false);
 
     const authStore = useAuth();
     const csrfStore = useCsrf();
@@ -62,8 +62,6 @@ axiosServices.interceptors.response.use(
     ) {
       void router.push('/auth/login');
     }
-
-    setLoading(false);
 
     // refreshTokenRequired가 없는 경우 그냥 응답 반환
     return response;

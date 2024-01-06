@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useConfig } from '@/store';
+import { useConfig, useCsrf } from '@/store';
 import { computed, onMounted, type ComputedRef } from 'vue';
 import { RouterView } from 'vue-router';
 
@@ -7,6 +7,10 @@ import { useTheme } from 'vuetify';
 
 // Components
 import Indication from '@/components/ui/Indication/Indication.vue';
+
+// csrf token initial settings
+const csrfStore = useCsrf();
+void csrfStore.getCsrfToken();
 
 /** Vuetify Theme */
 const theme = useTheme();
@@ -72,9 +76,9 @@ const jsonLd = JSON.stringify(
     <component :is="'script'" type="application/ld+json">
       {{ jsonLd }}
     </component>
-<!--    <link rel="icon" :href="logo" type="image/svg+xml" />-->
+    <!--    <link rel="icon" :href="logo" type="image/svg+xml" />-->
   </teleport>
-  <RouterView />
   <!-- Loading, Progress, Snackbar -->
   <Indication />
+  <RouterView />
 </template>

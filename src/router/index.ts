@@ -40,7 +40,7 @@ router.beforeEach(
     _from: RouteLocationNormalized,
     next: NavigationGuardNext
   ) => {
-    const globalStore = useGlobal();
+    // const globalStore = useGlobal();
     // Set CsrfToken
     // const authStore = useAuth();
     // const userStore = useUser();
@@ -49,7 +49,7 @@ router.beforeEach(
     // await authStore.checkAuth('accessToken', authStore.csrfToken);
     // // Set User Info
     // // Check if current route requires authentication
-    const requiresAuth = _to.matched.some(record => record.meta.requiresAuth);
+    // const requiresAuth = _to.matched.some(record => record.meta.requiresAuth);
     //
     // // If the user is not authenticated and the current route requires authentication, redirect to login
     // if (requiresAuth && !authStore.isAuth) {
@@ -73,7 +73,7 @@ router.beforeEach(
     // globalStore.setLoading(true);
 
     // Hide snack bar
-    globalStore.setMessage('');
+    // globalStore.setMessage('');
     next();
   }
 );
@@ -81,10 +81,10 @@ router.beforeEach(
 // Global After Hooks
 // https://router.vuejs.org/guide/advanced/navigation-guards.html#global-after-hooks}
 router.afterEach(() => {
-  const { setLoading } = useGlobal();
-
-  // Hide Loading
-  setLoading(false);
+  // const { setLoading } = useGlobal();
+  //
+  // // Hide Loading
+  // setLoading(false);
 });
 
 export default router;
