@@ -79,6 +79,6 @@ const jsonLd = JSON.stringify(
     <!--    <link rel="icon" :href="logo" type="image/svg+xml" />-->
   </teleport>
   <!-- Loading, Progress, Snackbar -->
-  <Indication />
   <RouterView />
+  <Indication />
 </template>

@@ -10,7 +10,9 @@ import axios from '@/utils/axios';
 
 onMounted(async () => {
   const globalStore = useGlobal();
-  globalStore.setLoading(false);
+  globalStore.setLoading(true);
+
+  console.log('Loading state after setLoading(true):', globalStore.loading);
 
   const userData = {
     id: 'user1234577',

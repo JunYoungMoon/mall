@@ -5,7 +5,7 @@ import { ref, type Ref } from 'vue';
 export default defineStore('global', () => {
   // State
   /** Loading overlay */
-  const loading: Ref<boolean> = ref(true);
+  const loading: Ref<boolean> = ref(false);
   /** ProgressBar Percentage */
   const progress: Ref<number | null> = ref(null);
   /** SnackBar Text */
@@ -17,7 +17,6 @@ export default defineStore('global', () => {
    * @param display - visibility
    */
   function setLoading(display: boolean): void {
-    debugger;
     loading.value = display;
     if (!display) {
       // Reset Progress value
