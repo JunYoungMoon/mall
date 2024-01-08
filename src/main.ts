@@ -2,7 +2,7 @@
  * Vue3 Main script
  */
 // Load vue core
-import store from '@/store';
+import store, { useCsrf } from '@/store';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
 
@@ -36,6 +36,10 @@ vue.use(store);
 vue.use(vuetify);
 vue.use(i18n);
 vue.use(PerfectScrollbar);
+
+// csrf token initial settings
+const csrfStore = useCsrf();
+void csrfStore.getCsrfToken();
 
 // Run!
 router
